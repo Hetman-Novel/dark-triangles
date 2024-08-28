@@ -1,0 +1,47 @@
+.wrap-lazy-load-image {
+    /*background-color: #f5f5f5;
+    overflow: hidden;*/
+    position: relative;
+}
+.wrap-lazy-load-image img,
+.wrap-lazy-load-image.img-loaded .sk-spinner-pulse {
+	opacity: 0;
+}
+.wrap-lazy-load-image img {
+    transition: 0.3s ease 0s;
+}
+.wrap-lazy-load-image.img-loaded img {
+    opacity: 1;
+}
+
+/* Spinner */
+.sk-spinner-pulse {
+	animation: sk-spinner-pulse 1s infinite ease-in-out;
+	background-color: #045FBC;
+	border-radius: 100%;
+	left: 50%;
+	height: 50px;
+	margin-left: -25px;
+	margin-top: -25px;
+	position: absolute;
+	top: 50%;
+	width: 50px;
+}
+@-webkit-keyframes sk-spinner-pulse {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
+@keyframes sk-spinner-pulse {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1);
+	}
+}
