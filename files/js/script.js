@@ -170,6 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
    /* --- */
    
+   // Top search form
    let blockSearchForm = document.querySelector('.block-search-form')
    if (blockSearchForm) {
       document.getElementById('show-form-search').addEventListener('click', () => {
@@ -184,4 +185,29 @@ document.addEventListener('DOMContentLoaded', function () {
       });
    }
 
+   // Filter blocks
+   const filterBlocks = document.querySelectorAll('.videos-by-author__block');
+   if (filterBlocks) {
+      document.querySelector('.filters-blocks').addEventListener('click', (event) => {
+         if (event.target.tagName.toUpperCase() !== 'LI') return false;
+         let filterClass = event.target.dataset['f'];
+         document.querySelectorAll('.filters-blocks li').forEach(li => {
+            li.classList.remove('active');
+         });
+         event.target.classList.add('active');
+         filterBlocks.forEach(filterBlock => {
+            filterBlock.classList.remove('hide');
+            if (filterBlock.dataset['block'] !== filterClass && filterClass !== 'all') {
+               filterBlock.classList.add('hide');
+            }
+         });
+      });
+
+      let blockSearchFormBlocks = document.getElementById('block-search-form')
+      if (blockSearchFormBlocks) {
+         document.getElementById('show-form-search-blocks').addEventListener('click', () => {
+            blockSearchFormBlocks.classList.toggle('show')
+         })
+      }
+   }
 });
